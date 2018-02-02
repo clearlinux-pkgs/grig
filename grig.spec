@@ -4,7 +4,7 @@
 #
 Name     : grig
 Version  : 0.8.1
-Release  : 1
+Release  : 2
 URL      : https://downloads.sourceforge.net/project/groundstation/Grig/0.8.1/grig-0.8.1.tar.gz
 Source0  : https://downloads.sourceforge.net/project/groundstation/Grig/0.8.1/grig-0.8.1.tar.gz
 Summary  : No detailed summary available
