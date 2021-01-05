@@ -4,7 +4,7 @@
 #
 Name     : grig
 Version  : 0.8.1
-Release  : 8
+Release  : 9
 URL      : https://sourceforge.net/projects/groundstation/files/Grig/0.8.1/grig-0.8.1.tar.gz
 Source0  : https://sourceforge.net/projects/groundstation/files/Grig/0.8.1/grig-0.8.1.tar.gz
 Summary  : No detailed summary available
@@ -19,6 +19,7 @@ BuildRequires : gettext
 BuildRequires : hamlib-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(gtk+-2.0)
+Patch1: 0001-Fix-build-with-hamlib-4.0.patch
 
 %description
 1. About Grig
@@ -71,13 +72,14 @@ man components for the grig package.
 %prep
 %setup -q -n grig-0.8.1
 cd %{_builddir}/grig-0.8.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604620689
+export SOURCE_DATE_EPOCH=1609805019
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -97,7 +99,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1604620689
+export SOURCE_DATE_EPOCH=1609805019
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grig
 cp %{_builddir}/grig-0.8.1/COPYING %{buildroot}/usr/share/package-licenses/grig/b47456e2c1f38c40346ff00db976a2badf36b5e3
