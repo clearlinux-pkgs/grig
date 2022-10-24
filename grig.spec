@@ -4,7 +4,7 @@
 #
 Name     : grig
 Version  : 0.8.1
-Release  : 9
+Release  : 10
 URL      : https://sourceforge.net/projects/groundstation/files/Grig/0.8.1/grig-0.8.1.tar.gz
 Source0  : https://sourceforge.net/projects/groundstation/files/Grig/0.8.1/grig-0.8.1.tar.gz
 Summary  : No detailed summary available
@@ -20,6 +20,7 @@ BuildRequires : hamlib-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(gtk+-2.0)
 Patch1: 0001-Fix-build-with-hamlib-4.0.patch
+Patch2: 0002-Fix-build-with-hamlib-4.2.patch
 
 %description
 1. About Grig
@@ -73,21 +74,22 @@ man components for the grig package.
 %setup -q -n grig-0.8.1
 cd %{_builddir}/grig-0.8.1
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609805019
+export SOURCE_DATE_EPOCH=1666627072
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -99,10 +101,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1609805019
+export SOURCE_DATE_EPOCH=1666627072
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/grig
-cp %{_builddir}/grig-0.8.1/COPYING %{buildroot}/usr/share/package-licenses/grig/b47456e2c1f38c40346ff00db976a2badf36b5e3
+cp %{_builddir}/grig-%{version}/COPYING %{buildroot}/usr/share/package-licenses/grig/b47456e2c1f38c40346ff00db976a2badf36b5e3
 %make_install
 %find_lang grig
 
