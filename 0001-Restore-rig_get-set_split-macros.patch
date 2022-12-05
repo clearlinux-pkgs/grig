@@ -1,0 +1,27 @@
+From 446f4d25580e05c4d17a8ea4c06a4f97537e042a Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Mon, 5 Dec 2022 08:57:42 -0800
+Subject: [PATCH] Restore rig_get/set_split macros
+
+These macros were removed from Hamlib in
+https://github.com/Hamlib/Hamlib/commit/1aed27c71a11bbd7f2c89b88bdcf2b1219383646
+---
+ src/rig-daemon.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/rig-daemon.c b/src/rig-daemon.c
+index 83f3d1332f9f..4a65b045e9a8 100644
+--- a/src/rig-daemon.c
++++ b/src/rig-daemon.c
+@@ -59,6 +59,8 @@
+ #include "rig-daemon.h"
+ 
+ 
++#define rig_set_split(r,v,s) rig_set_split_vfo((r),(v),(s),RIG_VFO_CURR)
++#define rig_get_split(r,v,s) ({ vfo_t _tx_vfo; rig_get_split_vfo((r),(v),(s),&_tx_vfo); })
+ 
+ RIG *myrig;  /*!< The rig structure. We keep this public so GUI can access the info fields. */
+ 
+-- 
+2.38.1
+
