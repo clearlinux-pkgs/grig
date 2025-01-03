@@ -1,1 +1,3 @@
-0001-Restore-rig_get-set_split-macros.patch
+backport-connect-connectrig.patch
+backport-const-struct-rig_caps-struct-rig_caps.patch
+backport-Restore-rig_get-set_split-macros.patch

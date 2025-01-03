@@ -1,0 +1,34 @@
+From 6f71a4299edc82a4eec8203478ed7bf86eb590d4 Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Fri, 3 Jan 2025 14:46:57 -0800
+Subject: [PATCH] const struct rig_caps -> struct rig_caps
+
+---
+ src/main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index dfcf6ade8880..e050097642bb 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -125,7 +125,7 @@ static gint        grig_app_delete     (GtkWidget *, GdkEvent *, gpointer);
+ static void        grig_app_destroy    (GtkWidget *, gpointer);
+ static void        grig_show_help      (void);
+ static void        grig_show_version   (void);
+-static gint        grig_list_add       (const struct rig_caps *, void *);
++static gint        grig_list_add       (struct rig_caps *, void *);
+ static gint        grig_list_compare   (gconstpointer, gconstpointer);
+ static void        grig_sig_handler    (int sig);
+ 
+@@ -729,7 +729,7 @@ grig_list_rigs ()
+  * \sa grig_list_rigs, grig_list_compare
+  */
+ static gint
+-grig_list_add (const struct rig_caps *caps, void *array)
++grig_list_add (struct rig_caps *caps, void *array)
+ {
+ 	grig_rig_info_t *info;
+ 
+-- 
+2.47.1
+

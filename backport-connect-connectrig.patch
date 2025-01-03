@@ -1,0 +1,43 @@
+From 05dfbd9ffb01914899acc9b38a45d1ef9374531f Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Fri, 3 Jan 2025 15:10:24 -0800
+Subject: [PATCH] connect -> connectrig
+
+---
+ src/rig-selector.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/rig-selector.c b/src/rig-selector.c
+index 425d41ae2bf7..e040c0ee7b3f 100644
+--- a/src/rig-selector.c
++++ b/src/rig-selector.c
+@@ -46,7 +46,7 @@ static void add     (GtkWidget *, gpointer);
+ static void delete  (GtkWidget *, gpointer);
+ static void edit    (GtkWidget *, gpointer);
+ static void cancel  (GtkWidget *, gpointer);
+-static void connect (GtkWidget *, gpointer);
++static void connectrig (GtkWidget *, gpointer);
+ static void selection_changed (GtkTreeSelection *sel, gpointer data);
+ 
+ static void render_civ (GtkTreeViewColumn *col,
+@@ -191,7 +191,7 @@ rig_selector_execute ()
+     g_signal_connect (G_OBJECT (cancbut), "clicked",
+                       G_CALLBACK (cancel), window);
+     g_signal_connect (G_OBJECT (conbut), "clicked",
+-                      G_CALLBACK (connect), window);
++                      G_CALLBACK (connectrig), window);
+     g_signal_connect (G_OBJECT (delbut), "clicked",
+                       G_CALLBACK (delete), NULL);
+     g_signal_connect (G_OBJECT (newbut), "clicked",
+@@ -439,7 +439,7 @@ static void cancel (GtkWidget *button, gpointer window)
+  * simply destroys the rig selector window and whereby control is returned
+  * to the main() function.
+  */
+-static void connect (GtkWidget *button, gpointer window)
++static void connectrig (GtkWidget *button, gpointer window)
+ {
+     
+     
+-- 
+2.47.1
+
